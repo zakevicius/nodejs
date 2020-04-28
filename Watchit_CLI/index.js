@@ -6,6 +6,7 @@ const chokidar = require("chokidar");
 const debounce = require("lodash.debounce");
 const program = require("caporal");
 const { spawn } = require("child_process");
+const chalk = require("chalk");
 
 const access = util.promisify(fs.access);
 
@@ -20,27 +21,32 @@ const access = util.promisify(fs.access);
 // }
 
 program
-  .version('0.0.1')
-  .argument('[filename]', 'Name of a file to execute')
-  .action(async ({ filename }) => {
-    const name = filename || "index.js";
+	.version("0.0.1")
+	.argument("[filename]", "Name of a file to execute")
+	.action(async ({ filename }) => {
+		const name = filename || "index.js";
 
-    try {
-      await access(name);
-    } catch (err) {
-      throw new Error(`File "${name}" was not found`);
-    }
+		try {
+			await access(name);
+		} catch (err) {
+			throw new Error(`File "${name}" was not found`);
+		}
 
-    const start = debounce(() => {
-      spawn('node', [name], { stdio: 'inherit' });
-    }, 300);
+		let proc;
 
-    chokidar
-      .watch('.')
-      .on("add", start)
-      .on("change", start)
-      .on("unlink", start);
-  });
+		const start = debounce(() => {
+			if (proc) proc.kill();
+
+			console.log(chalk.blue(">>>> Starting new process..."));
+
+			proc = spawn("node", [name], { stdio: "inherit" });
+		}, 300);
+
+		chokidar
+			.watch(".")
+			.on("add", start)
+			.on("change", start)
+			.on("unlink", start);
+	});
 
 program.parse(process.argv);
-

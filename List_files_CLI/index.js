@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const util = require('util');
-const chalk = require('chalk');
-const path = require('path');
+const fs = require("fs");
+const util = require("util");
+const chalk = require("chalk");
+const path = require("path");
 
 // 2nd Promise based method
 // const lstat = util.promisify(fs.lstat);
@@ -11,80 +11,75 @@ const path = require('path');
 // 3rd Promise based method
 // const { lstat } = fs.promises;
 
-const targetDir = process.argv[2] || process.cwd();  // adding additional param as directory
+const targetDir = process.argv[2] || process.cwd(); // adding additional param as directory
 
 fs.readdir(targetDir, async (err, files) => {
-  if (err) {
-    throw new Error(err);
-  }
+	if (err) {
+		throw new Error(err);
+	}
 
-  // Callback based method for listing 
+	// Callback based method for listing
 
-  // const allStats = Array(files.length).fill(null);
+	// const allStats = Array(files.length).fill(null);
 
-  // for (let file of files) {
-  //   const index = files.indexOf(file);
+	// for (let file of files) {
+	//   const index = files.indexOf(file);
 
-  //   fs.lstat(file, (err, stats) => {
-  //     if (err) throw new Error(err);
+	//   fs.lstat(file, (err, stats) => {
+	//     if (err) throw new Error(err);
 
-  //     allStats[index] = stats;
+	//     allStats[index] = stats;
 
-  //     const ready = allStats.every((stats) => {
-  //       return stats;
-  //     });
+	//     const ready = allStats.every((stats) => {
+	//       return stats;
+	//     });
 
-  //     if (ready) {
-  //       allStats.forEach((stats, i) => {
-  //         console.log(files[i], stats.isFile())
-  //       });
-  //     }
-  //   });
-  // }
+	//     if (ready) {
+	//       allStats.forEach((stats, i) => {
+	//         console.log(files[i], stats.isFile())
+	//       });
+	//     }
+	//   });
+	// }
 
+	// Promise solution
 
-  // Promise solution
+	// for (let file of files) {
+	//   try {
+	//     const stats = await lstat(file);
 
-  // for (let file of files) {
-  //   try {
-  //     const stats = await lstat(file);
+	//     console.log(file, stats.isFile());
+	//   } catch (err) {
+	//     console.log(err);
+	//   }
+	// }
 
-  //     console.log(file, stats.isFile());
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+	// Promise.all solution
 
+	const statPromises = files.map((file) => lstat(path.join(targetDir, file)));
 
-  // Promise.all solution
+	const allStats = await Promise.all(statPromises);
 
-  const statPromises = files.map(file => lstat(path.join(targetDir, file)));
+	for (let stats of allStats) {
+		const index = allStats.indexOf(stats);
 
-  const allStats = await Promise.all(statPromises);
-
-  for (let stats of allStats) {
-    const index = allStats.indexOf(stats);
-
-    if (stats.isFile()) {
-      console.log(chalk.yellow(files[index]))
-    } else {
-      console.log(chalk.blue(files[index]))
-    }
-
-  }
+		if (stats.isFile()) {
+			console.log(chalk.yellow(files[index]));
+		} else {
+			console.log(chalk.blue(files[index]));
+		}
+	}
 });
-
 
 // 1st Promise based method
 
 const lstat = (file) => {
-  return new Promise((resolve, reject) => {
-    fs.lstat(file, (err, stats) => {
-      if (err) reject(err);
+	return new Promise((resolve, reject) => {
+		fs.lstat(file, (err, stats) => {
+			if (err) reject(err);
 
-      setTimeout(() => resolve(stats), 500)
-      // resolve(stats);
-    })
-  })
-}
-
+			setTimeout(() => resolve(stats), 500);
+			// resolve(stats);
+		});
+	});
+};
