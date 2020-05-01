@@ -5,6 +5,19 @@ const util = require("util");
 const chalk = require("chalk");
 const path = require("path");
 
+// 1st Promise based method
+
+const lstat = (file) => {
+	return new Promise((resolve, reject) => {
+		fs.lstat(file, (err, stats) => {
+			if (err) reject(err);
+
+			setTimeout(() => resolve(stats), 500);
+			// resolve(stats);
+		});
+	});
+};
+
 // 2nd Promise based method
 // const lstat = util.promisify(fs.lstat);
 
@@ -70,16 +83,3 @@ fs.readdir(targetDir, async (err, files) => {
 		}
 	}
 });
-
-// 1st Promise based method
-
-const lstat = (file) => {
-	return new Promise((resolve, reject) => {
-		fs.lstat(file, (err, stats) => {
-			if (err) reject(err);
-
-			setTimeout(() => resolve(stats), 500);
-			// resolve(stats);
-		});
-	});
-};

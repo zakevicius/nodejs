@@ -1,0 +1,32 @@
+[
+  {
+    "email": "test@test.lt",
+    "password": "c88a115ab58abba8287094662af1ed4668b3369ac9fa88573f34007414873f4338c12cac68f116b26bc7c2cb3e1f6c7e28e459a995000cf757693a5fc5a6a931.1835aedb88a2a282",
+    "id": "fd359521"
+  },
+  {
+    "email": "test2@test.lt",
+    "password": "1d43ff49e7297b4faae429a84e63d15b6f24fff356b401fe60f216a7539f7edb68aa60f6dcdae92ecb7570eecede4bad71fdfb1dc73e2aca0bc4692f16fe4420.30472093b0e7847f",
+    "id": "abd497b9"
+  },
+  {
+    "email": "test3@test.lt",
+    "password": "dd8ee762bd113e2b9308482bb3f40b9915137031f9883f087bd8aa6eb2ea39b4fc75a28c09183818d7aba8fee478222ba9fa96aef290c2c466e135277d63c045.5fb00c8751c8fe14",
+    "id": "38fda20f"
+  },
+  {
+    "email": "test4@test.lt",
+    "password": "3fb9be1e499b30e1af1b55e35d14a4ab87ce65b45b266b5fbb772811777493b3a74a4bd2f95c3ea4ae16259f4796995cca562db55930b1b4d4e295fbc72166e1.c4abd8367c12da67",
+    "id": "7880a904"
+  },
+  {
+    "email": "test5@test.lt",
+    "password": "3207ac5b32ac181e4a07784aa8546f11b8f53fb0f00625ce432863832aafbb6b7e8639f7473017e0f8505d0eff30ae9c6e0f97f06226bf8ed7c31638d035020c.fa8a664c2aae9098",
+    "id": "11aece34"
+  },
+  {
+    "email": "test6@test.lt",
+    "password": "a31b3f8b44fa2810dd3b103880cd3cc0b1af46d4a191978172bbf1732dd1b7d273d8ee60e2f6b4f226f88dcfcc8378c8d96d9a149c62976d887f0ab06c55d72f.a7b9aa5d8c135330",
+    "id": "7e6136c5"
+  }
+]
