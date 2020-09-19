@@ -1,0 +1,66 @@
+.webp .image1 {
+	background-image: url('./img/webp/1.webp');
+}
+
+.webp .image2 {
+	background-image: url('./img/webp/2.webp');
+}
+
+.webp .image3 {
+	background-image: url('./img/webp/3.webp');
+}
+
+.webp .image4 {
+	background-image: url('./img/webp/4.webp');
+}
+
+.webp .image11 {
+	background-image: url('./img/webp/11.webp');
+}
+
+.webp .image22 {
+	background-image: url('./img/webp/22.webp');
+}
+
+.webp .image33 {
+	background-image: url('./img/webp/33.webp');
+}
+
+.no-webp .image1,
+.no-js .image1 {
+	background-image: url('./img/1.png');
+}
+
+.no-webp .image2,
+.no-js .image2 {
+	background-image: url('./img/2.png');
+}
+
+.no-webp .image3,
+.no-js .image3 {
+	background-image: url('./img/3.png');
+}
+
+.no-webp .image4,
+.no-js .image4 {
+	background-image: url('./img/4.png');
+}
+
+.no-webp .image11,
+.no-js .image11 {
+	background-image: url('./img/11.jpeg');
+}
+
+.no-webp .image22,
+.no-js .image22 {
+	background-image: url('./img/22.jpeg');
+}
+
+.no-webp .image33,
+.no-js .image33 {
+	background-image: url('./img/33.jpeg');
+}
+
+div[class^='image'] {
+	background-size: cover;
+}

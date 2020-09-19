@@ -1,0 +1,16 @@
+{
+	"name": "webp",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon app.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"imagemin": "^7.0.1",
+		"imagemin-webp": "^6.0.0",
+		"nodemon": "^2.0.4"
+	}
+}

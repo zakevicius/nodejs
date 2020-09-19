@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="main.css" />
+		<style>
+			div.grid {
+				display: grid;
+				grid-template-columns: 200px 200px 200px;
+				grid-template-rows: 200px 200px 200px;
+			}
+			img {
+				width: 200px;
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grid">
+			<picture>
+				<source srcset="./img/webp/1.webp" type="image/webp" />
+				<source srcset="./img/1.png" type="image/png" />
+				<img src="./img/1.png" alt="image/png" />
+			</picture>
+			<img src="./img/webp/2.webp" alt="" />
+			<img src="./img/webp/3.webp" alt="" />
+			<img src="./img/webp/4.webp" alt="" />
+			<img src="./img/webp/11.webp" alt="" />
+			<img src="./img/webp/22.webp" alt="" />
+			<img src="./img/webp/33.webp" alt="" />
+		</div>
+
+		<div class="grid">
+			<div class="image1"></div>
+			<div class="image2"></div>
+			<div class="image3"></div>
+			<div class="image4"></div>
+			<div class="image11"></div>
+			<div class="image22"></div>
+			<div class="image33"></div>
+		</div>
+	</body>
+	<script src="modernizr-custom.js"></script>
+	<script>
+		document.documentElement.classList.remove('no-js');
+	</script>
+</html>
